@@ -13,10 +13,8 @@ from single_neuron import LinearNeuron
 import matplotlib.pyplot as plt
 
 
-
-
 if __name__ == '__main__':
-    learning_rate = 0.01
+    learning_rate = 0.99
     input_patterns = [
         ([1.0, 0.8], 0.3),
     ]
@@ -27,10 +25,11 @@ if __name__ == '__main__':
     )
 
     loss_graph_data = []
-    for x in range (0, 1000):
+    for x in range (0, 100000):                   # !FIXME should run it till convergence. 1000 is just an assumed number. But it is not right
         input = input_patterns[0][0]
         label = input_patterns[0][1]
         y = n.forward(input)
+        print(y)
         J = 0.5*(label-y)*(label-y)
         
         grad_J_u = -(label-y)
@@ -48,21 +47,48 @@ if __name__ == '__main__':
         )
 
 
-        loss_graph_data.append((n.w[1], J ))
+        loss_graph_data.append((n.w[0], n.w[1], n.b, J ))
     
 
 
         
     # Extract x and y values from the tuples
-    print(n.w)
-    print(n.b)
-    print(n.forward(input_patterns[0][0]))
+    print('=======Final======')
+    print('weights: ', n.w)
+    print('bias: ', n.b)
+    print('output: ',n.forward(input_patterns[0][0]))
+    print('=======Final======')
     
     data = loss_graph_data
-    x_values, y_values = zip(*data)
+    w1, w2, b , y_values = zip(*data)
 
     # Create a scatter plot
-    plt.scatter(x_values, y_values, marker='o', color='b', label='Data Points')
+    plt.scatter(w1, y_values, marker='o', color='b', label='w1')
+
+        # Add labels and a legend (if needed)
+    plt.xlabel('X-axis Label')
+    plt.ylabel('Y-axis Label')
+    plt.title('Scatter Plot of Data')
+    plt.legend()
+
+    # Show the plot
+    plt.grid(True)  # Optional: Add grid lines
+    plt.show()
+
+    plt.scatter(w2, y_values, marker='o', color='b', label='w2')
+
+        # Add labels and a legend (if needed)
+    plt.xlabel('X-axis Label')
+    plt.ylabel('Y-axis Label')
+    plt.title('Scatter Plot of Data')
+    plt.legend()
+
+    # Show the plot
+    plt.grid(True)  # Optional: Add grid lines
+    plt.show()
+
+    plt.scatter(b, y_values, marker='o', color='b', label='b')
+
 
     # Add labels and a legend (if needed)
     plt.xlabel('X-axis Label')
