@@ -10,16 +10,18 @@ def plot_single_neuron(neuron, input):
     for i in range(0, len(neuron.w)):
         input_label = "x"+ str(i+1) +" = " +str(round(input[i], 2))
         G.add_node(input_label, pos = (-1,-i-1))
-        G.add_edges_from([(input_label, "Σ", str(round(neuron.w[i])))])
+        G.add_edges_from([(input_label, "Σ")])
 
+    
+ 
 
 
     u = neuron.linear_combination(input)
-    u_label = "u = "+ str(round(u))
+    u_label = "u = "+ str(round(u,2))
     G.add_node(u_label, pos=(1, middle_pos))
 
     y = neuron.activation_function(u)
-    y_label = "y = " + str(round(y))
+    y_label = "y = " + str(round(y,2))
 
     G.add_node("f", pos=(2, middle_pos))
     G.add_node(y_label, pos=(3, middle_pos))
