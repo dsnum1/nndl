@@ -73,7 +73,7 @@ if __name__ == '__main__':
         ],
         b = -0.5
     )
-    
+
 
     # create a forward
     input_list = [0.4,0.5,-0.3, 0.4, 0.8, 0.4]

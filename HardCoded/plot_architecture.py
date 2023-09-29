@@ -2,7 +2,6 @@ import networkx as nx
 import matplotlib.pyplot as plt
 
 def plot_single_neuron(neuron, input):
-
     G = nx.DiGraph()
     middle_pos = -len(neuron.w)//2
     G.add_node("Σ", pos = (0, middle_pos) )
