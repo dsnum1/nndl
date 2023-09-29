@@ -1,6 +1,8 @@
 import matplotlib.pyplot as plt
 import networkx as nx
 from plot_architecture import plot_single_neuron
+import torch
+
 
 class Neuron:
     def __init__(self, w, b):
@@ -31,21 +33,51 @@ class Neuron:
         return y
     
 
+
+class SigmoidNeuron(Neuron):
+    def activation_function(self, u):
+        y = torch.sigmoid(torch.tensor(u))
+        return float(y.item())
+        return 
+
+
+class ReLUNeuron(Neuron):
+    def activation_function(self, u):
+        y = max(0,u)
+        return y
+    
+
+class LinearNeuron(Neuron):
+    pass
+
+class ThresholdNeuron(Neuron):
+    def activation_function(self, u):
+        y = int(u>0)
+        return y
+
+class BipolarSigmoidal(Neuron):
+    def activation_function(self, u):
+        y =  torch.tanh(torch.tensor(u)).item()
+        return y
+
 if __name__ == '__main__':
     # create neuron n
-    n = Neuron(
+    n = ReLUNeuron(
         w = [
-            1.0,
-            -2.6,
-            -1.5
+            -1.0,
+            0.6,
+            0.2,
+            0.1,
+            -0.6,
+            -0.5,
         ],
-
         b = -0.5
     )
-
+    
 
     # create a forward
-    print(n.forward([1,2,3]))
+    input_list = [0.4,0.5,-0.3, 0.4, 0.8, 0.4]
+    print(n.forward(input_list))
 
-    plot_single_neuron(n, [1,2,3])
+    plot_single_neuron(n, input_list)
 
