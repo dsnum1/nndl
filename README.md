@@ -1,7 +1,7 @@
 # Neural Network and Deep Learning
 This is a self-exploration of artificial neural networks.
 
-##Chapters
+## Chapters
 - Introduction
 - Single Neuron
 
