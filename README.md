@@ -33,7 +33,7 @@ J = 0.5(y-d)^2
       1. For each pattern
           1. Calculate output.
           ```
-          y = n.forward(pattern[0)
+          y = n.forward(pattern[0])
           ```
           2. Calculate loss 
           ```
