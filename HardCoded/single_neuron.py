@@ -34,7 +34,7 @@ class Neuron:
     
 
 
-class SigmoidNeuron(Neuron):
+class Perceptron(Neuron):
     def activation_function(self, u):
         y = torch.sigmoid(torch.tensor(u))
         return float(y.item())
