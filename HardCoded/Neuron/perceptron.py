@@ -20,7 +20,7 @@ class Perceptron(Neuron):
         y = self.adjusted_activation_function(u, amplitude=amplitude, shift=shift)
         return y
 
-    def cost_function(self, d, y):
+    def cost_function(self, y,d):
         return square_error(d,y)
         pass
 
